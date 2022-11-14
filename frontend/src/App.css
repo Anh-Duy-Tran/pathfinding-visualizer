@@ -51,5 +51,15 @@ header {
 .Tile {
   width: 30px;
   height: 30px;
-  border: 1px solid var(--light-blue);
+  border: 0.5px solid var(--light-blue);
+  background: white;
+  transition: all .1s ease-in-out;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.Tile:hover {
+  background-image: url('./assets/start-point.png');
+  cursor: pointer;
+  transform: scale(1.3);
 }

@@ -1,5 +1,5 @@
 :root {
-  --light-blue: #607080;
+  --light-blue: #A0B0C0;
   --blue: #6D7D8D;
   --off-white: #E9E6C6;
   --white: #F6F2EA;
@@ -33,14 +33,15 @@ header {
 }
 
 #Info {
-  background-color: var(--off-white);
+  background-color: var(--white);
   width: 100%;
   height: 100px;
 }
 
-.Board {
+#Board {
   display: flex;
   flex-direction: column;
+  align-items: center;
 }
 
 .Row {

@@ -2,10 +2,10 @@ import Tile from "./Tile"
 
 const Row = ({ column, x }) => {
   return (
-    <div class="Row">
+    <div className="Row">
       {
-        Array.from(Array(column)).map((y) =>
-          <Tile key = {y} x={x} y={y}></Tile>)
+        Array.from(Array(column)).map((y, i) =>
+          <Tile key={(x+1) * column + i} x={x} y={i}></Tile>)
       }
     </div>
   )

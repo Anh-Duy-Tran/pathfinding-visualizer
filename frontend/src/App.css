@@ -1,0 +1,54 @@
+:root {
+  --light-blue: #607080;
+  --blue: #6D7D8D;
+  --off-white: #E9E6C6;
+  --white: #F6F2EA;
+}
+
+body {
+  margin: 0; 
+  height: 100%; 
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: auto;
+}
+
+header {
+  align-items: center;
+
+  padding-top: 0.5rem;
+  padding-left: 1rem;
+
+  
+  background-color: var(--blue);
+  color: var(--white);
+  display: flex;
+  gap: 20px;
+}
+
+#dropdown-algo {
+  background-color: var(--blue);
+  color: var(--white);
+  border: 0;
+}
+
+#Info {
+  background-color: var(--off-white);
+  width: 100%;
+  height: 100px;
+}
+
+.Board {
+  display: flex;
+  flex-direction: column;
+}
+
+.Row {
+  display: flex;
+}
+
+.Tile {
+  width: 30px;
+  height: 30px;
+  border: 1px solid var(--light-blue);
+}

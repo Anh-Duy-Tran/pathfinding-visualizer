@@ -1,15 +1,17 @@
 const pathfinding = require('express').Router()
+const solver = require('../logic/pathfinding')
 
 pathfinding.post('/init', (req, res) => {
   const data = req.body;
-
-  const boardSize = data.size;
-  const startNode = data.start;
-  const endNode = data.end;
-  const blocks = data.blocks;
+  const algo = data.algo;
   
-  res.send({boardSize, startNode, endNode, blocks});
-  res.send(data)
+  if (algo === 'BFS') {
+    res.json(solver.solveBFS(data))
+    return;
+  }
+
+  res.send('Not found algo');
+  return;
 })
 
 module.exports = pathfinding

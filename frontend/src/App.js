@@ -7,23 +7,32 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 
 
-function App({ boardDimensions }) {
+function App() {
 
   const [ algo, setAlgo ] = useState('')
+  const [ placing, setPlacing ] = useState('start')
+
+  const [ startPoint, setStartPoint ] = useState(null)
+  const [ endPoint, setEndPoint ] = useState(null)
 
   const onSelectAlgo = (e) => {
     console.log(e);
   }
 
-  const onClickVisualize = (e) => {
-
+  const onSetStartPoint = (e) => {
+    const tile = e.currentTarget
+    const coord = {
+      x : tile.getAttribute('x'),
+      y : tile.getAttribute('y')
+    }
+    
   }
 
   return (
     <>
-      <Header onSelectAlgo={onSelectAlgo} onClickVisualize={onClickVisualize}></Header>
+      <Header onSelectAlgo={onSelectAlgo}></Header>
       <Info></Info>
-      <Board boardDimensions={boardDimensions}></Board>
+      <Board placing={placing} startPoint={startPoint} endPoint={endPoint} onSetStartPoint={onSetStartPoint}></Board>
     </>
   );
 }

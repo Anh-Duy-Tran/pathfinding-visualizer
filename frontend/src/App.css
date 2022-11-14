@@ -3,6 +3,7 @@
   --blue: #6D7D8D;
   --off-white: #E9E6C6;
   --white: #F6F2EA;
+  --hover-img: '';
 }
 
 body {
@@ -53,13 +54,13 @@ header {
   height: 30px;
   border: 0.5px solid var(--light-blue);
   background: white;
-  transition: all .1s ease-in-out;
+  transition: all .2s ease-in-out;
   background-size: contain;
   background-repeat: no-repeat;
 }
 
 .Tile:hover {
-  background-image: url('./assets/start-point.png');
+  background-image: var(--hover-img);
   cursor: pointer;
   transform: scale(1.3);
 }

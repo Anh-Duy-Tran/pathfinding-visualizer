@@ -1,6 +1,6 @@
 import Row from "./Row";
 
-const Board = ({ placing, startPoint, endPoint, onSetStartPoint}) => {
+const Board = ({ placing, blocks, startPoint, endPoint, onSetStartPoint, onSetEndPoint}) => {
   const tileSize = 30;
   const boardDimensions = {
     row: Math.floor((window.innerHeight - 130) / tileSize) - 1,
@@ -10,9 +10,18 @@ const Board = ({ placing, startPoint, endPoint, onSetStartPoint}) => {
   return (
     <div id="Board">
     {
-      Array.from(Array(boardDimensions.row)).map((x, i) =>  {
-        return <Row key={i} column={boardDimensions.column} x={i} placing={placing} onSetStartPoint={onSetStartPoint}></Row>
-      }
+      Array.from(Array(boardDimensions.row)).map((x, i) => 
+      <Row 
+        key={i} 
+        column={boardDimensions.column} 
+        x={i} 
+        placing={placing}
+        blocks={blocks}
+        startPoint={startPoint}
+        endPoint={endPoint}
+        onSetStartPoint={onSetStartPoint}
+        onSetEndPoint={onSetEndPoint}
+      ></Row>
       )
     }
     </div>

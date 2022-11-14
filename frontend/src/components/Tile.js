@@ -1,18 +1,20 @@
-import assets from "../assets";
+import assets from '../assets/index'
 
-const Tile = ({ x, y, placing, blocks, startPoint, endPoint, onSetPoint }) => {
-  let img = ''
+const Tile = ({ x, y, placing, blocks, startPoint, endPoint, onSetPoint, mouseOverTile }) => {
+  let className = 'Tile'
+  let hoverImgURL = ''
+  
   if (startPoint && x == startPoint.x && y == startPoint.y) {
-    img = assets.start
+    className += ' start'
   }
   if (endPoint && x == endPoint.x && y == endPoint.y) {
-    img = assets.end
+    className += ' end'
   }
   if (blocks.some(block => block.x == x && block.y == y)) {
-    img = assets.block
+    className += ' block'
   }
   
-  let hoverImgURL = ''
+
   switch (placing) {
     case "start":
       hoverImgURL = assets.start;
@@ -20,21 +22,19 @@ const Tile = ({ x, y, placing, blocks, startPoint, endPoint, onSetPoint }) => {
     case "end":
       hoverImgURL = assets.end;
       break;
-    default:
+    case "block":
       hoverImgURL = assets.block;
       break;
   }
 
   return (
     <div 
-      className="Tile" 
+      className={className}
       x={x} 
       y={y} 
-      onClick={onSetPoint} 
-      style={{ 
-        '--hover-img': `url(${hoverImgURL})`,
-        'backgroundImage' : img !== '' ? `url(${img})` : ''
-      }} 
+      onClick={onSetPoint}
+      onMouseOver={mouseOverTile}
+      style={{  '--hover-img': `url(${hoverImgURL})` }}
     ></div>
   )
 }

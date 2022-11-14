@@ -1,6 +1,15 @@
 import Row from "./Row";
 
-const Board = ({ placing, blocks, startPoint, endPoint, onSetPoint }) => {
+const Board = ({ 
+    placing, 
+    blocks, 
+    startPoint, 
+    endPoint, 
+    onSetPoint, 
+    mouseOverTile, 
+    mouseDown,
+    mouseUp }) => {
+
   const tileSize = 30;
   const boardDimensions = {
     row: Math.floor((window.innerHeight - 130) / tileSize) - 1,
@@ -8,7 +17,11 @@ const Board = ({ placing, blocks, startPoint, endPoint, onSetPoint }) => {
   }
 
   return (
-    <div id="Board">
+    <div 
+      id="Board"
+      onMouseDown={mouseDown}
+      onMouseUp={mouseUp}
+    >
     {
       Array.from(Array(boardDimensions.row)).map((x, i) => 
       <Row 
@@ -20,6 +33,7 @@ const Board = ({ placing, blocks, startPoint, endPoint, onSetPoint }) => {
         startPoint={startPoint}
         endPoint={endPoint}
         onSetPoint={onSetPoint}
+        mouseOverTile={mouseOverTile}
       ></Row>
       )
     }

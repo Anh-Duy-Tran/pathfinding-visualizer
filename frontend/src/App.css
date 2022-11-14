@@ -4,6 +4,9 @@
   --off-white: #E9E6C6;
   --white: #F6F2EA;
   --hover-img: '';
+  --block-img: url('./assets/block.png');
+  --start-img: url('./assets/start-point.png');
+  --end-img: url('./assets/end-point.png');
   --empty-img: white;
 }
 
@@ -62,6 +65,34 @@ header {
 
 .Tile:hover {
   background-image: var(--hover-img);
+  cursor: pointer;
+  transform: scale(1.3);
+}
+
+.block {
+  border: 0;
+  background-image: var(--block-img);
+}
+
+.block:hover {
+  cursor: pointer;
+  transform: scale(1.3);
+}
+
+.start {
+  background-image: var(--start-img);
+}
+
+.start:hover {
+  cursor: pointer;
+  transform: scale(1.3);
+}
+
+.end {
+  background-image: var(--end-img);
+}
+
+.end:hover {
   cursor: pointer;
   transform: scale(1.3);
 }

@@ -1,6 +1,6 @@
 import Row from "./Row";
 
-const Board = ({ placing, blocks, startPoint, endPoint, onSetStartPoint, onSetEndPoint}) => {
+const Board = ({ placing, blocks, startPoint, endPoint, onSetPoint }) => {
   const tileSize = 30;
   const boardDimensions = {
     row: Math.floor((window.innerHeight - 130) / tileSize) - 1,
@@ -19,8 +19,7 @@ const Board = ({ placing, blocks, startPoint, endPoint, onSetStartPoint, onSetEn
         blocks={blocks}
         startPoint={startPoint}
         endPoint={endPoint}
-        onSetStartPoint={onSetStartPoint}
-        onSetEndPoint={onSetEndPoint}
+        onSetPoint={onSetPoint}
       ></Row>
       )
     }

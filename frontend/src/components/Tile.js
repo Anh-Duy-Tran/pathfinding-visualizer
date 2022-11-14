@@ -1,6 +1,6 @@
 import assets from "../assets";
 
-const Tile = ({ x, y, placing, blocks, startPoint, endPoint, onSetStartPoint, onSetEndPoint }) => {
+const Tile = ({ x, y, placing, blocks, startPoint, endPoint, onSetPoint }) => {
   let img = ''
   if (startPoint && x == startPoint.x && y == startPoint.y) {
     img = assets.start
@@ -13,15 +13,12 @@ const Tile = ({ x, y, placing, blocks, startPoint, endPoint, onSetStartPoint, on
   }
   
   let hoverImgURL = ''
-  let event
   switch (placing) {
     case "start":
       hoverImgURL = assets.start;
-      event = onSetStartPoint
       break;
     case "end":
       hoverImgURL = assets.end;
-      event = onSetEndPoint
       break;
     default:
       hoverImgURL = assets.block;
@@ -33,7 +30,7 @@ const Tile = ({ x, y, placing, blocks, startPoint, endPoint, onSetStartPoint, on
       className="Tile" 
       x={x} 
       y={y} 
-      onClick={event} 
+      onClick={onSetPoint} 
       style={{ 
         '--hover-img': `url(${hoverImgURL})`,
         'backgroundImage' : img !== '' ? `url(${img})` : ''

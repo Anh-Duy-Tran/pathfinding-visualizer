@@ -1,6 +1,6 @@
 import Tile from "./Tile"
 
-const Row = ({ column, x, placing, blocks, startPoint, endPoint, onSetStartPoint, onSetEndPoint}) => {
+const Row = ({ column, x, placing, blocks, startPoint, endPoint, onSetPoint }) => {
   const mystyle = {
     color: "white",
     backgroundColor: "DodgerBlue",
@@ -20,8 +20,7 @@ const Row = ({ column, x, placing, blocks, startPoint, endPoint, onSetStartPoint
             startPoint={startPoint}
             endPoint={endPoint}
             placing={placing}
-            onSetStartPoint={onSetStartPoint}
-            onSetEndPoint={onSetEndPoint}
+            onSetPoint={onSetPoint}
           ></Tile>)
       }
     </div>

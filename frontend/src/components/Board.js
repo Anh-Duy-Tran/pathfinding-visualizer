@@ -8,12 +8,13 @@ const Board = ({
     onSetPoint, 
     mouseOverTile, 
     mouseDown,
-    mouseUp }) => {
+    mouseUp,
+        }) => {
 
   const tileSize = 30;
   const boardDimensions = {
-    row: Math.floor((window.innerHeight - 130) / tileSize) - 1,
-    column: Math.floor(window.innerWidth / tileSize) -1
+    height: Math.floor((window.innerHeight - 130) / tileSize) - 1,
+    width: Math.floor(window.innerWidth / tileSize) -1
   }
 
   return (
@@ -21,12 +22,14 @@ const Board = ({
       id="Board"
       onMouseDown={mouseDown}
       onMouseUp={mouseUp}
+      height={boardDimensions.height}
+      width={boardDimensions.width}
     >
     {
-      Array.from(Array(boardDimensions.row)).map((x, i) => 
+      Array.from(Array(boardDimensions.height)).map((x, i) => 
       <Row 
         key={i} 
-        column={boardDimensions.column} 
+        column={boardDimensions.width} 
         x={i} 
         placing={placing}
         blocks={blocks}

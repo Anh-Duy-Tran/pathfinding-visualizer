@@ -3,6 +3,9 @@ import Info from './components/Info';
 import Board from './components/Board';
 
 import { useState } from 'react';
+
+import services from './services/pathfinding'
+
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 
@@ -19,7 +22,7 @@ function App() {
   const [ holding, setHolding ] = useState(false)
 
   const onSelectAlgo = (e) => {
-    console.log(e);
+    
   }
 
   const onSetPoint = (e) => {
@@ -43,7 +46,7 @@ function App() {
     }
     
     const indexOfBlock = blocks.findIndex(block => block.x == coord.x && block.y == coord.y)
-    console.log(indexOfBlock);
+    
     if (indexOfBlock !== -1) {
       let newBlocks = [...blocks]
       newBlocks.splice(indexOfBlock, 1)
@@ -67,7 +70,7 @@ function App() {
       case "block":
         setBlocks(blocks.concat({x : coord.x, y : coord.y}))
         tile.classList.add(placing)
-        console.log(blocks);
+        
         break;
     }
   }
@@ -86,6 +89,28 @@ function App() {
     return;
   }
 
+  const onClickSolve = (e) => {
+    const board = document.getElementById("Board");
+    const size = {
+      height : Number(board.getAttribute('height')),
+      width : Number(board.getAttribute('width'))
+    }
+
+    const data = {
+      size : size,
+      start : startPoint,
+      end : endPoint,
+      blocks : blocks,
+      algo : "BFS"
+    }
+
+    console.log(data);
+    services
+    .solveBoard(data)
+    .then(console.log)
+    
+  }
+
   const mouseDown = (e) => {
     setHolding(true);
   }
@@ -96,7 +121,10 @@ function App() {
 
   return (
     <>
-      <Header onSelectAlgo={onSelectAlgo}></Header>
+      <Header 
+        onSelectAlgo={onSelectAlgo}
+        onClickSolve={onClickSolve}
+      ></Header>
       <Info></Info>
       <Board 
         placing={placing} 

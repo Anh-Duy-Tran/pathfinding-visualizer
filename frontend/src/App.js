@@ -11,6 +11,7 @@ import './App.css';
 
 
 function App() {
+  const timing = 100;
 
   const [ algo, setAlgo ] = useState('')
   const [ placing, setPlacing ] = useState('start')
@@ -20,6 +21,10 @@ function App() {
   const [ blocks, setBlocks ] = useState([])
 
   const [ holding, setHolding ] = useState(false)
+  const [ visited, setVisited ] = useState([])
+
+  const [ doneVisiting, setDoneVisiting ] = useState(false)
+  const [ path, setPath ] = useState([]) 
 
   const onSelectAlgo = (e) => {
     
@@ -107,9 +112,36 @@ function App() {
     console.log(data);
     services
     .solveBoard(data)
-    .then(console.log)
-    
+    .then(res => {
+      const queueLog = res.log;
+      const found = res.found;
+      
+
+      for (let i = 0; i < queueLog.length; i++) {
+        setTimeout(() => {
+          let newVisited = []
+          for (let j = 0; j <= i; j++) {
+            newVisited = newVisited.concat(queueLog[j])
+          }
+          setVisited(newVisited)
+        }, timing * (i+1));
+      }
+
+      if (found) {
+        const path = res.path;
+        setTimeout(() => {
+          for (let i = 0; i < path.length; i++) {
+            setTimeout(() => {
+              let temp = [...path]
+              setPath(temp.splice(0, i+1))
+            }, timing/2 * (i + 1))
+          }
+        }, (timing * (queueLog.length+2)))
+      }
+    })
   }
+
+  console.log(path);
 
   const mouseDown = (e) => {
     setHolding(true);
@@ -135,6 +167,8 @@ function App() {
         mouseOverTile={mouseOverTile}
         mouseDown={mouseDown}
         mouseUp={mouseUp}
+        visited={visited}
+        path={path}
       ></Board>
     </>
   );

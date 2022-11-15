@@ -1,17 +1,23 @@
 import assets from '../assets/index'
 
-const Tile = ({ x, y, placing, blocks, startPoint, endPoint, onSetPoint, mouseOverTile }) => {
+const Tile = ({ x, y, placing, blocks, startPoint, endPoint, onSetPoint, mouseOverTile, visited, path }) => {
   let className = 'Tile'
   let hoverImgURL = ''
   
   if (startPoint && x == startPoint.x && y == startPoint.y) {
     className += ' start'
-  }
+  } else
   if (endPoint && x == endPoint.x && y == endPoint.y) {
     className += ' end'
-  }
+  } else
   if (blocks.some(block => block.x == x && block.y == y)) {
     className += ' block'
+  } else
+  if (path.some(v => v.x == x && v.y == y)) {
+    className = 'Tile path'
+  } else 
+  if (visited.some(v => v.x == x && v.y == y)) {
+    className += ' visited'
   }
   
 

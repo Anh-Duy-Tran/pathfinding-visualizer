@@ -9,7 +9,9 @@ const Board = ({
     mouseOverTile, 
     mouseDown,
     mouseUp,
-        }) => {
+    visited,
+    path
+      }) => {
 
   const tileSize = 30;
   const boardDimensions = {
@@ -37,6 +39,8 @@ const Board = ({
         endPoint={endPoint}
         onSetPoint={onSetPoint}
         mouseOverTile={mouseOverTile}
+        visited={visited}
+        path={path}
       ></Row>
       )
     }

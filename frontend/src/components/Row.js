@@ -1,6 +1,6 @@
 import Tile from "./Tile"
 
-const Row = ({ column, x, placing, blocks, startPoint, endPoint, onSetPoint, mouseOverTile }) => {
+const Row = ({ column, x, placing, blocks, startPoint, endPoint, onSetPoint, mouseOverTile, visited, path }) => {
   const mystyle = {
     color: "white",
     backgroundColor: "DodgerBlue",
@@ -22,6 +22,8 @@ const Row = ({ column, x, placing, blocks, startPoint, endPoint, onSetPoint, mou
             placing={placing}
             onSetPoint={onSetPoint}
             mouseOverTile={mouseOverTile}
+            visited={visited}
+            path={path}
           ></Tile>)
       }
     </div>

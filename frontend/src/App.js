@@ -101,6 +101,7 @@ function App() {
       width : Number(board.getAttribute('width'))
     }
 
+    
     const data = {
       size : size,
       start : startPoint,
@@ -109,10 +110,11 @@ function App() {
       algo : "BFS"
     }
 
-    console.log(data);
     services
     .solveBoard(data)
     .then(res => {
+      setPath([])
+      setVisited([])
       const queueLog = res.log;
       const found = res.found;
       
